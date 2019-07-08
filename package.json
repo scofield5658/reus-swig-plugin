@@ -1,6 +1,6 @@
 {
   "name": "reus-swig-plugin",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "license": "MIT",
   "author": "guozhi <zhi.guo@geekthings.com.cn>",
   "scripts": {
@@ -43,6 +43,10 @@
     "webpack": "^3.12.0"
   },
   "peerDependencies": {
+    "reus-jagger-plugin": "^0.4.2",
     "reus.js": "^1.1.0"
+  },
+  "devDependencies": {
+    "reus-jagger-plugin": "^0.4.2"
   }
 }

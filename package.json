@@ -1,8 +1,8 @@
 {
   "name": "reus-swig-plugin",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "license": "MIT",
-  "author": "guozhi <zhi.guo@geekthings.com.cn>",
+  "author": "guozhi <guozhi5658@gmail.com>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,7 +14,6 @@
   "dependencies": {
     "autoprefixer": "^7.2.5",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.2",
     "babel-loader": "^7.1.5",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -22,7 +21,6 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "css-loader": "^0.28.11",
-    "eslint-plugin-html": "^4.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-minifier": "^3.5.21",
     "loader-utils": "^1.1.0",
@@ -43,10 +41,14 @@
     "webpack": "^3.12.0"
   },
   "peerDependencies": {
-    "reus-jagger-plugin": "^0.4.2",
-    "reus.js": "^1.1.0"
+    "reus-jagger-plugin": "^0.4.3",
+    "reus.js": "^1.1.3"
   },
   "devDependencies": {
-    "reus-jagger-plugin": "^0.4.2"
+    "babel-eslint": "^8.0.2",
+    "eslint-plugin-html": "^4.0.1",
+    "eslint-plugin-testcafe": "^0.2.1",
+    "testcafe": "^1.6.1",
+    "reus-jagger-plugin": "^0.4.3"
   }
 }

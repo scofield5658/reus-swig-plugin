@@ -5,7 +5,7 @@ const swig = require('swig');
 const handleManifest = require('reus-jagger-plugin/src/loaders/manifest');
 const handleAsset = require('reus-jagger-plugin/src/loaders/asset');
 const handleReferer = require('reus-jagger-plugin/src/loaders/referer');
-const handleSsr = require('./loaders/ssr');
+const handleSsr = require('reus-jagger-plugin/src/loaders/ssr');
 const getUtils = require('./helpers/utils');
 
 module.exports = function(workdir, config) {

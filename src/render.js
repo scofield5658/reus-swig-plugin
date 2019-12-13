@@ -7,6 +7,7 @@ const handleAsset = require('reus-jagger-plugin/src/loaders/asset');
 const handleReferer = require('reus-jagger-plugin/src/loaders/referer');
 const handleSsr = require('reus-jagger-plugin/src/loaders/ssr');
 const getUtils = require('./helpers/utils');
+const handleAssetHelper = require('./helpers/asset')
 
 module.exports = function(workdir, config) {
   const {srcRoute, srcUrl, writefile, abssrc, abstmp, absdest, abs2rel, tgtURL} = getUtils(config, workdir);
@@ -17,7 +18,7 @@ module.exports = function(workdir, config) {
   }
 
   const manifest = handleManifest(workdir, config);
-  const asset = handleAsset(workdir, config);
+  const asset = handleAssetHelper(handleAsset(workdir, config));
   const referer = handleReferer(workdir, config);
   const ssr = handleSsr(workdir, config);
 
@@ -36,8 +37,9 @@ module.exports = function(workdir, config) {
     throw 'not found';
   };
 
-  const getRenderParams = ({ html = '', state = {}, enable = false }) => {
+  const getRenderParams = ({ title = 'jagger', html = '', state = {}, enable = false }) => {
     return {
+      title,
       __SSR__: enable,
       __HTML__: html,
       __STATE__: JSON.stringify(state)
@@ -46,16 +48,16 @@ module.exports = function(workdir, config) {
 
   return async function(ctx, viewpath, data) {
     const route = srcRoute(getRoute(url.parse(ctx.req.url).pathname));
-    const { ssr: ssrConfig } = data;
+    const { title, ssr: ssrConfig } = data;
     let viewData = {};
 
     const queries = ctx.query || {};
     if (ssrConfig && ((process.env.REUS_PROJECT_ENV && process.env.REUS_PROJECT_ENV !== 'dev') || queries.__ssr)) {
-      const {type, entry} = ssrConfig;
-      const {html, state, enable} = await ssr[type]({entry, route: ctx.req.url});
-      viewData = await getRenderParams({ html, state, enable });
+      const { type, entry } = ssrConfig;
+      const { html, state, enable } = await ssr[type]({entry, route: ctx.req.url});
+      viewData = await getRenderParams({ title, html, state, enable });
     } else {
-      viewData = await getRenderParams({});
+      viewData = await getRenderParams({ title });
     }
 
     if ((config.mirage && config.mirage.enable)

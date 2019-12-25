@@ -12,3 +12,5 @@
 [download-image]: https://img.shields.io/npm/dm/reus-swig-plugin.svg?style=flat-square
 [download-url]: https://npmjs.org/package/reus-swig-plugin
 [license-image]: https://img.shields.io/npm/l/reus-swig-plugin.svg
+
+> plugin for rendering based on jagger && swig engine
